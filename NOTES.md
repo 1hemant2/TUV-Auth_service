@@ -20,3 +20,4 @@ Schema enforcement.
   - middleware/
     - authMiddleware.js  // Middleware to protect routes
   - index.js
+  
