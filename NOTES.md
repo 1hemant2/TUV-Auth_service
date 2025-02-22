@@ -15,9 +15,9 @@ Schema enforcement.
     - authRoutes.js
     - profileRoutes.js
     - passwordRoutes.js
-  - models/
-    - userModel.js       // Schema for user data
   - middleware/
     - authMiddleware.js  // Middleware to protect routes
   - index.js
+# architecture 
+https://chatgpt.com/c/67b9824e-13cc-8003-bf54-efd9c0005fd5
   
