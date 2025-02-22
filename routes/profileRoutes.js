@@ -5,4 +5,4 @@ const Route = require('express').Router();
 
 Route.get('/user', authMiddleware, profileController.createUser);
 
-module.exports = { profileRoutes: Route };
+module.exports = Route;

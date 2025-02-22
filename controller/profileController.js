@@ -1,14 +1,17 @@
 const clientResponse = require('../config/clientResponse');
 const { findOne, createUser } = require('../config/PrimsmaClient');
+const bcrypt = require('bcryptjs');
 
 class ProfileController {
-    async __checkIfDataIsUnique (data) {
+
+    async _checkIfDataIsUnique (data) {
        const user = await findOne(data, data); 
        if(user) {
            return false;
        }
        return true;
     }
+
     async _checkIfValidUser(data) {
 
         if(!data.email) {
@@ -30,14 +33,15 @@ class ProfileController {
         if(!data.username) {
             throw new Error("username is required"); 
         }
-        let user = await this.__checkIfDataIsUnique(email);
+        let user = await this._checkIfDataIsUnique(email);
         if(user) {
             throw new Error("Email already exists");
         }
-        user = await this.__checkIfDataIsUnique(username); 
+        user = await this._checkIfDataIsUnique(username); 
         if(user) {
             throw new Error("Username already exists");
         }
+        return true;
     }
     async getProfile (req, res) {
         try {
