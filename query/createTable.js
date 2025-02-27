@@ -8,7 +8,7 @@ const createTable = {
             password TEXT,  
             firstName  TEXT,
             lastName TEXT,
-            timestamp TIMESTAMPTZ DEFAULT NOW()
+            timestamp TIMESTAMPTZ DEFAULT NOW(),
             createdAT TIMESTAMPTZ DEFAULT NOW()
         )`,
    create_OTP_table : 
@@ -16,7 +16,7 @@ const createTable = {
             _id uuid primary key,
             user_id uuid,
             otp TEXT unique,
-            timestamp TIMESTAMPTZ DEFAULT NOW()
+            timestamp TIMESTAMPTZ DEFAULT NOW(),
             createdAT TIMESTAMPTZ DEFAULT NOW()
         )`,
     create_access_token_table : 
@@ -24,7 +24,7 @@ const createTable = {
             _id uuid primary key,
             user_id uuid,
             access_token TEXT,
-            timestamp TIMESTAMPTZ DEFAULT NOW()
+            timestamp TIMESTAMPTZ DEFAULT NOW(),
             createdAT TIMESTAMPTZ DEFAULT NOW()
         )`,
     create_session_table : 
@@ -32,7 +32,7 @@ const createTable = {
             _id uuid,
             user_id uuid,
             session_id TEXT,
-            timestamp TIMESTAMPTZ DEFAULT NOW()
+            timestamp TIMESTAMPTZ DEFAULT NOW(),
             createdAT TIMESTAMPTZ DEFAULT NOW()
         )`,
     create_logs_table : 
@@ -46,7 +46,7 @@ const createTable = {
             lastName TEXT,
             session_id TEXT,
             access_token TEXT,
-            timestamp TIMESTAMPTZ DEFAULT NOW()
+            timestamp TIMESTAMPTZ DEFAULT NOW(),
             createdAT TIMESTAMPTZ DEFAULT NOW()
         )`,
     create_role_table : 
@@ -54,14 +54,14 @@ const createTable = {
             _id uuid primary key,
             user_id uuid,
             name TEXT,
-            timestamp TIMESTAMPTZ DEFAULT NOW()
+            timestamp TIMESTAMPTZ DEFAULT NOW(),
             createdAT TIMESTAMPTZ DEFAULT NOW()
         )`,
     create_allowed_role_table : 
         `create table allowed_roles(
             _id uuid primary key,
             name TEXT, 
-            timestamp TIMESTAMPTZ DEFAULT NOW()
+            timestamp TIMESTAMPTZ DEFAULT NOW(),
             createdAT TIMESTAMPTZ DEFAULT NOW()
         )`
 }
