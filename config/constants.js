@@ -1,6 +1,6 @@
 const CONSTANTS = {
     URL : {
-        POSTGRES_AUTH_URL : process.env.POSTGRES_AUTH_URL
+        POSTGRES_AUTH_URL : process.env.AUTH_POSTGRE_URL
     }
 }
 

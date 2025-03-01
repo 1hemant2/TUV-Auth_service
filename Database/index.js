@@ -1,16 +1,21 @@
 const { Pool } = require('pg');
 const CONSTANTS = require('../config/constants');
 
-const pool = new Pool({
+
+const authPool = new Pool({
   connectionString: CONSTANTS.URL.POSTGRES_AUTH_URL
 });
-const client = await pool.connect();
 
-const queryExector = async (query, values) => {
+
+let client;
+
+const dbClient = async (item) => {
   try {
-    const result = await client.query(query, values);
+    client = await authPool.connect();
+    const result = await client.query(item.query, item.values);
     return result;
   } catch (error) {
+    console.error('error from dbClient =>', error);
     return error
   } finally {
     client.release();
@@ -18,6 +23,6 @@ const queryExector = async (query, values) => {
 }
 
 module.exports = {
-  pool,
-  queryExector
+  authPool,
+  dbClient
 };

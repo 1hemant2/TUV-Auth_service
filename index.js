@@ -2,12 +2,8 @@ const express = require('express');
 const app = express(); // create express app
 const bodyParser = require('body-parser'); // parse json 
 const cors = require('cors');  // allow cross origin requests
-const jwt = require('jsonwebtoken'); // json web token for authentication 
-const bcrypt = require('bcryptjs'); // hash password 
-const authMiddleware = require('./middleware/authMiddleware');
-const profileRoutes = require('./routes/profileRoutes');
-
 const port = process.env.PORT || 5001; // port number
+const routes = require('./routes'); // routes
 app.use(cors()); // allow cross origin requests 
 app.use(bodyParser.json()); // parse json 
 app.use(bodyParser.urlencoded({ extended: true })); // parse url encoded data 
@@ -17,10 +13,10 @@ app.use((req, res, next) => {
     next();
 });
 
-app.use('/profile', profileRoutes); 
+app.use('/api/v1', routes); 
 
 
-app.get("/auth/ping", (req, res) => {
+app.get("/ping", (req, res) => {
     return res.send('pong');
 })
 

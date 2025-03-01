@@ -1,17 +1,18 @@
-const createTable = {
-   create_user_table :
-      `create table users (
-            _id uuid primary key,
-            name varchar(200),
-            username varchar(200) unique,
-            email varchar(200) unique,
-            password TEXT,  
-            firstName  TEXT,
-            lastName TEXT,
-            timestamp TIMESTAMPTZ DEFAULT NOW(),
-            createdAT TIMESTAMPTZ DEFAULT NOW()
-        )`,
-   create_OTP_table : 
+const createTableQuery = {
+    begin :`BEGIN`,
+    create_user_table :
+       `create table users (
+             _id uuid primary key,
+             name varchar(200),
+             username varchar(200) unique,
+             email varchar(200) unique,
+             password TEXT,  
+             firstName  TEXT,
+             lastName TEXT,
+             timestamp TIMESTAMPTZ DEFAULT NOW(),
+             createdAT TIMESTAMPTZ DEFAULT NOW()
+         )`,
+    create_OTP_table : 
        `create table otp (
             _id uuid primary key,
             user_id uuid,
@@ -29,7 +30,7 @@ const createTable = {
         )`,
     create_session_table : 
        `create table session (
-            _id uuid,
+            _id uuid primary key,
             user_id uuid,
             session_id TEXT,
             timestamp TIMESTAMPTZ DEFAULT NOW(),
@@ -58,14 +59,15 @@ const createTable = {
             createdAT TIMESTAMPTZ DEFAULT NOW()
         )`,
     create_allowed_role_table : 
-        `create table allowed_roles(
+        `create table existing_roles(
             _id uuid primary key,
             name TEXT, 
             timestamp TIMESTAMPTZ DEFAULT NOW(),
             createdAT TIMESTAMPTZ DEFAULT NOW()
-        )`
+        )`,
+    commit : `COMMIT`
 }
 
 module.exports = {
-    createTable
+    createTableQuery
 }

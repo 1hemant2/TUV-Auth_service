@@ -19,6 +19,10 @@ class clientResponseService {
         return res.status(500).send({ error: error });
     }
 
+    async sendErrorResponse (res, code, message) {
+        return res.status(code || 500).send({ error: message });
+    }
+
 }
 
 module.exports = new clientResponseService();
