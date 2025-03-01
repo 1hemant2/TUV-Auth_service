@@ -1,4 +1,4 @@
-const operation = { 
+const operationQuery = { 
     userOperation : {
         'create_user' : `insert into users (name, username, email, password, firstName, lastName) values ($1, $2, $3, $4, $5)`,
         'find_user_email' : `select * from users where email = $1`,
@@ -37,5 +37,5 @@ const operation = {
 }
 
 module.exports = {
-    operation
+    operationQuery
 }

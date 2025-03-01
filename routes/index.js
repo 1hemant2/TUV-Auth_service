@@ -1,10 +1,9 @@
-const { profileRoutes } = require('./profileRoutes');
-// ...import other routes...
-
 const express = require('express');
 const router = express.Router();
+const tableRoutes = require('./tableRoutes');
+const userRoutes = require('./userRoutes');
 
-router.use('/profile', profileRoutes);
-// ...use other routes...
+router.use('/user', userRoutes);
+router.use('/table', tableRoutes);
 
 module.exports = router;
